@@ -1,7 +1,7 @@
 @php
     $id = $getId();
     $isDisabled = $isDisabled();
-    $color = $getColor();
+    $color = $getColor($state);
     $colorClass = match ($color) {
         'danger' => 'text-danger-500',
         'gray' => 'text-gray-500',
