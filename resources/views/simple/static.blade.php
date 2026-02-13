@@ -1,6 +1,8 @@
 @php
     $state = $getState();
-    $color = $getColor($state);
+     $column = $getColumn();
+
+    $color = $column->getColor($state);
     $colorClass = match ($color) {
         'danger' => 'text-danger-500',
         'gray' => 'text-gray-500',
