@@ -1,5 +1,7 @@
 @php
-    $state = (int) ($getState() ?? 0);
+    $rawState = $getState();
+    $state = is_null($rawState) ? null : (int) $rawState;
+
     $color = $getColor($state);
     $colorClass = match ($color) {
         'danger' => 'text-danger-500',
