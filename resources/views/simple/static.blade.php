@@ -34,12 +34,14 @@
         </div>
     @endif
 
-    @foreach ($getStarsArray() as $value)
+   @foreach ($getStarsArray() as $value)
+        @php $value = (int) $value; @endphp
+
         <div
             @class([
-            'text-slate-300' => is_null($state) || $state < $value,
-            $colorClass => ! is_null($state) && $state >= $value,
-        ])
+                'text-slate-300' => is_null($state) || $state < $value,
+                $colorClass => ! is_null($state) && $state >= $value,
+            ])
         >
             <x-icon name="heroicon-s-star" class="{{ $sizeClass }} pointer-events-none" />
         </div>
