@@ -1,5 +1,5 @@
 @php
-    $state = $getState();
+    $state = (int) ($getState() ?? 0);
     $color = $getColor($state);
     $colorClass = match ($color) {
         'danger' => 'text-danger-500',
@@ -35,9 +35,9 @@
     @foreach ($getStarsArray() as $value)
         <div
             @class([
-                "text-slate-300" => $state < $value,
-                $colorClass => $state >= $value,
-            ])
+            'text-slate-300' => is_null($state) || $state < $value,
+            $colorClass => ! is_null($state) && $state >= $value,
+        ])
         >
             <x-icon name="heroicon-s-star" class="{{ $sizeClass }} pointer-events-none" />
         </div>
